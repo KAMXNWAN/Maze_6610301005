@@ -168,15 +168,24 @@ if __name__ == '__main__':
 
     while True:
         print(m.ply.y, m.ply.x)
-        if m.move_up():
-            m.maze[m.ply.y][m.ply.x-1] == " "
+        if m.move_up() and m.maze[m.ply.y-1][m.ply.x] == " " :
             m.maze[m.ply.y][m.ply.x] = "P"
             m.move_up()
-            time.sleep(0.25)
             m.print()
-        elif m.move_up() and m.maze[m.ply.y][m.ply.x-1] == "X":
-            m.move_down()
-            move_left() and m.maze[m.ply.y][m.ply.x-1]
+            if m.move_up() and m.maze[m.ply.y-1][m.ply.x] == " " :
+                m.move_left()
+               
+                
+        
+                
+
+
+
+
+
+                
+                
+                #move_left() and m.maze[m.ply.y][m.ply.x-1]
             
 
 
