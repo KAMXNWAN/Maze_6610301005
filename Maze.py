@@ -171,9 +171,9 @@ if __name__ == '__main__':
         if m.move_up():
             m.maze[m.ply.y][m.ply.x-1] == " "
             m.maze[m.ply.y][m.ply.x] = "P"
-            m.ply = m.move_up
+            m.move_up()
             time.sleep(0.25)
-            m.print()    
+            m.print()
         elif m.move_up() and m.maze[m.ply.y][m.ply.x-1] == "X":
             m.move_down()
             move_left() and m.maze[m.ply.y][m.ply.x-1]
