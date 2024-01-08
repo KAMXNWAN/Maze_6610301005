@@ -154,94 +154,57 @@ if __name__ == '__main__':
 
     m = maze()#สร้างแผนที่
     m.print()#ปีิ้นแผนที่
-    stack = Stack()
+    s = Stack()
+    sn = _StackNode
     
-    # m.move_up()
-    # m.print()
-    # print(m.ply.x, m.ply.y)
-    # input()
-
-    # m.move_up()
-    # m.print()
-    # print(m.ply.x, m.ply.y)
-    # input()
-
     while True:
-        print(m.ply.y, m.ply.x)
-        if m.maze[m.ply.y-1][m.ply.x] == " " :
-            m.maze[m.ply.y+1][m.ply.x] == " "
-            m.maze[m.ply.y][m.ply.x-1] == " "
-            m.maze[m.ply.y][m.ply.x+1] == " "   
-            m.maze[m.ply.y][m.ply.x] = "P"
-      
+        s.push((m.ply.y,m.ply.x))
+        m.end
+        #m.move_up()
+        # print(m.ply.x, m.ply.y)
 
-                
-               
-                
-        
-                
-
-
-
-
-
-                
-                
-                #move_left() and m.maze[m.ply.y][m.ply.x-1]
+        if m.maze[m.ply.y-1][m.ply.x] == " ":#เช้คตำแหน่ง
+            m.move_up()
+            a = s.peek()
+            m.maze[a[0]][a[1]]= 'u'
+           
+            m.print()
+            s.push((m.ply.y,m.ply.x))
+            #m.maze[m.ply.y][m.ply.x]= 'O'
             
-
-
-
-        
-            
-
-
-
+            m.print()
 
         
-        # if 
-        #     m.maze[next_move.y][next_move.x] == " "
-        #     m.maze[m.ply.y][m.ply.x] = " "
-        #     m.maze[m.next_move.y][m.next_move.x] = "P"
-        #     m.ply = move_up
-        #     time.sleep(0.25)
-        # else:
-        #     m.maze[next_move.y][next_move.x] == "X":
+        # elif m.maze[m.ply.y-1][m.ply.x] == "X":
+        #     m.move_down()
+        #     m.print()
+        # elif m.maze[m.ply.y][m.ply.x-1] == "X ":
+        #             m.move_left()
+        #             m.print()
+        elif m.maze[m.ply.y][m.ply.x+1] == " " :
+            m.move_right()
+            a = s.peek()
+            m.maze[a[0]][a[1]]= 'r'
+            m.print()
+        elif m.maze[m.ply.y-1][m.ply.x+1] == "X":
+            m.move_down()
+            a = s.peek()
+            m.maze[a[0]][a[1]]= 'd'
+            m.print()
+        elif m.maze[m.ply.y][m.ply.x-1] == "X":
+            m.move_left()
+            a = s.peek()
+            m.maze[a[0]][a[1]]= 'l'
+            m.print()
+        # elif m.maze[m.ply.y][m.ply.x] =="E" :
+        #     m.printEND()
+        elif s.peek() in set() and m.ply != m.end:
+            l = s.pop()
+            s.push((m.ply.y,m.ply.x))
+            c = s.peek()
+            print(l,c)
+            print(m.ply)
+            input()
 
-        
-
-
-
-
-            
-
-    #m.move_up()
-    #m.print()
-    #input()
-
-  
-
-    # while True:
-    #     if keyboard.is_pressed("q"):
-    #         print("Quit Program")
-    #         break
-    #     if keyboard.is_pressed("w"):
-    #         if m.move_up():
-    #             m.print()
-    #         else:
-    #             break
-    #     if keyboard.is_pressed("s"):
-    #         if m.move_down():
-    #             m.print()
-    #         else:
-    #             break
-    #     if keyboard.is_pressed("a"):
-    #         if m.move_left():
-    #             m.print()
-    #         else:
-    #             break
-    #     if keyboard.is_pressed("d"):
-    #         if m.move_right():
-    #             m.print()
-    #         else:
-    #             break
+            m.ply = pos[l[0],c[1]]
+            set.remove(c)
